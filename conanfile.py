@@ -12,8 +12,8 @@ class ImGuiExample(ConanFile):
     def requirements(self):
         self.requires("imgui/1.92.0-docking")
         self.requires("glfw/3.4")
-        self.requires("glad/0.1.36")
         self.requires("spdlog/1.15.0")
+        self.requires("stb/cci.20240531")
 
     def generate(self):
         copy(self, "*glfw*", os.path.join(self.dependencies["imgui"].package_folder,

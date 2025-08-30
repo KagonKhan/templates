@@ -10,7 +10,6 @@ if (POLICY CMP0141)
 endif()
 
 
-
 # =======================    PROJECT    ==========================
 project (YARR CXX)
 add_subdirectory(deps)

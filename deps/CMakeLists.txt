@@ -11,7 +11,6 @@ add_library(imgui_bindings
 
 target_link_libraries(imgui_bindings
     PUBLIC imgui::imgui
-    PUBLIC glad::glad
     PUBLIC glfw
 )
 

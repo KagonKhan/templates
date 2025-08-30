@@ -1,9 +1,11 @@
-﻿#include "App/app.hpp"
+﻿ #include "App/app.hpp"
 
-int main(int, char **) {
+ int main(int, char **) {
 
-  App app("name");
-  app.run();
+   App app("name");
+   app.run();
 
-  return 0;
-}
+   return 0;
+ }
+
+
