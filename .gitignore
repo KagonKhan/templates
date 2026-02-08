@@ -1,4 +1,7 @@
-.vs/*
-build/*
+/build
+/bin
 
-deps/bindings/*
+.vs/
+CMakeSettings.json
+CMakeUserPresets.json
+deps/
