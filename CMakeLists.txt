@@ -25,11 +25,11 @@ add_executable(dear-imgui-conan
 
     src/renderer/image.cpp
     src/renderer/renderer.cpp
+
+    src/utils/logger.cpp
 )
 
-target_include_directories(dear-imgui-conan PUBLIC 
-    ${PROJECT_SOURCE_DIR}/src/
-)
+target_include_directories(dear-imgui-conan PUBLIC src)
 
 target_link_libraries(dear-imgui-conan PUBLIC
     ImguiBindings

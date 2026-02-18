@@ -29,13 +29,16 @@ Renderer::Renderer()
 
 void Renderer::render()
 {
-    ImGui::Begin("OpenGL Texture Text");
+    ImGui::Begin("Renderer options");
     ImGui::Text("pointer = %x", image.id());
     ImGui::Text("size = %d x %d", (int)image.size().x, (int)image.size().y);
 
     if (ImGui::Checkbox("Generate noise", &generateNoise_) || generateNoise_) {
         updateWithNoise(image);
     }
+
+    ImGui::End();
+
 
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 
@@ -51,6 +54,4 @@ void Renderer::render()
     ImGui::Image((ImTextureID)(intptr_t)image.id(), image.size());
     ImGui::End();
     ImGui::PopStyleVar(1);
-
-    ImGui::End();
 }

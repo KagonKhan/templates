@@ -11,7 +11,7 @@
 namespace
 {
 
-const char*const       glsl_version = "#version 150";
+const char* const      glsl_version = "#version 150";
 const ImGuiWindowFlags window_flags =
     ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse |
     ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
@@ -106,29 +106,24 @@ void App::run(int fps)
 
         startNewFrame();
 
-
-        ImGuiWindowFlags host_flags =
-            ImGuiWindowFlags_NoTitleBar |
-            ImGuiWindowFlags_NoCollapse |
-            ImGuiWindowFlags_NoResize |
-            ImGuiWindowFlags_NoMove |
-            ImGuiWindowFlags_NoDocking |
-            ImGuiWindowFlags_NoBringToFrontOnFocus |
-            ImGuiWindowFlags_NoNavFocus |
-            ImGuiWindowFlags_NoBackground;
         const ImGuiViewport* viewport = ImGui::GetMainViewport();
         ImGui::SetNextWindowPos(viewport->WorkPos);
         ImGui::SetNextWindowSize(viewport->WorkSize);
         ImGui::SetNextWindowViewport(viewport->ID);
 
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
-        ImGui::Begin("ImGui Template", nullptr, host_flags);
+        ImGui::Begin("ImGui Template", nullptr, window_flags);
         ImGui::PopStyleVar(1);
 
         ImGuiID dockspace_id = ImGui::GetID("RootDockSpace");
         ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None);
 
         renderer->render();
+
+        ImGui::Begin("Console Log");
+
+        ImGui::End();
+
         ImGui::End();
 
         finishFrame();
