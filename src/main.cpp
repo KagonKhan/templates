@@ -1,53 +1,28 @@
 ﻿#include "app/app.hpp"
 
 #include "utils/logger.hpp"
+#include "utils/utils.hpp"
 
 #include <spdlog/spdlog.h>
-#include <iostream>
-class TestBase : LoggerBase
-{
-public:
-    TestBase()
-        : LoggerBase("TestBase")
-    {
-        LOG_CRITICAL("Your mom is {} kg phat", 2002);
-    }
-};
 
-class TestCRTP : LoggerCRTP<TestCRTP>
+struct Test
 {
-public:
-    static std::string name() { return "TestCRTP"; }
+    Logger<Test> logger;
 
-    TestCRTP()
+    Test()
     {
-        LOG_CRITICAL("Your mom is {} kg phat", 2002);
+        logger.CRITICAL("your momma");
     }
 };
 
 
-#define LOG LoggerMacro::get("TestMacro")
-
-
-void doMacro()
-{
-    LOG.TRACE("Some macro logger test");
-    LOG.DEBUG("Some macro logger test");
-    LOG.INFO("Some macro logger test");
-    LOG.WARNING("Some macro logger test");
-    LOG.ERROR("Some macro logger test");
-    LOG.CRITICAL("Some macro logger test");
-}
+struct Testing : private TrackingLogger<Testing>
+{};
 
 int main()
 {
-    TestBase base;
-    TestCRTP crtp;
-
-    doMacro();
-    std::cout << "\n\n";
     spdlog::set_level(spdlog::level::trace);
-    doMacro();
+    Testing tt;
 
     // App app {"Template Project"};
     // app.run();
